@@ -11,11 +11,6 @@ class WishesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:wishes)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create wish" do
     assert_difference('Wish.count') do
       post :create, :wish => @wish.attributes
@@ -27,16 +22,6 @@ class WishesControllerTest < ActionController::TestCase
   test "should show wish" do
     get :show, :id => @wish.to_param
     assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, :id => @wish.to_param
-    assert_response :success
-  end
-
-  test "should update wish" do
-    put :update, :id => @wish.to_param, :wish => @wish.attributes
-    assert_redirected_to wish_path(assigns(:wish))
   end
 
   test "should destroy wish" do

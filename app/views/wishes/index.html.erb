@@ -1,35 +1,19 @@
-<h1>Listing wishes</h1>
+<h1>欲しいものリスト</h1>
 
 <table>
   <tr>
-    <th>Uri</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Image url</th>
-    <th>Thumbneil url</th>
-    <th>Bought</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>名前</th>
+    <th>値段</th>
+    <th>説明</th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @wishes.each do |wish| %>
   <tr>
-    <td><%= wish.uri %></td>
-    <td><%= wish.name %></td>
+    <td><%= link_to wish.name, wish%></td>
     <td><%= wish.price %></td>
-    <td><%= wish.image_url %></td>
-    <td><%= wish.thumbneil_url %></td>
-    <td><%= wish.bought %></td>
-    <td><%= wish.user %></td>
-    <td><%= link_to 'Show', wish %></td>
-    <td><%= link_to 'Edit', edit_wish_path(wish) %></td>
-    <td><%= link_to 'Destroy', wish, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to '削除', wish, :confirm => '削除してもよろしいですか?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Wish', new_wish_path %>

@@ -3,10 +3,11 @@ class CreateWishes < ActiveRecord::Migration
     create_table :wishes do |t|
       t.string :uri
       t.string :name
+      t.text :description
       t.integer :price
       t.string :image_url
       t.string :thumbneil_url
-      t.boolean :bought
+      t.boolean :bought, :default => false
       t.references :user
 
       t.timestamps

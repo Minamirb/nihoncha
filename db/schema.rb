@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(:version => 20101126071533) do
   create_table "wishes", :force => true do |t|
     t.string   "uri"
     t.string   "name"
+    t.text     "description"
     t.integer  "price"
     t.string   "image_url"
     t.string   "thumbneil_url"
-    t.boolean  "bought"
+    t.boolean  "bought",        :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
