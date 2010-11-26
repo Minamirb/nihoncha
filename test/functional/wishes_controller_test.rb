@@ -31,4 +31,13 @@ class WishesControllerTest < ActionController::TestCase
 
     assert_redirected_to wishes_path
   end
+
+  context "on POST :preview" do
+    setup do
+      post :preview, :wish => {:uri => mock_uri}, :format => 'json'
+    end
+    should "assign fetched data" do
+      assert_not_nil assigns(:wish)[:name]
+    end
+  end
 end

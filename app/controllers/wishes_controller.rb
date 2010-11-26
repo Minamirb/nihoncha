@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 class WishesController < ApplicationController
+  respond_to :html, :json
   def index
     @wishes = Wish.all
-
+    @wish = Wish.new
     respond_to do |format|
-      format.html 
+      format.html
       format.xml  { render :xml => @wishes }
     end
   end
@@ -19,16 +21,12 @@ class WishesController < ApplicationController
 
   def create
     @wish = Wish.new(params[:wish])
-
-    respond_to do |format|
-      if @wish.save
-        format.html { redirect_to(@wish, :notice => 'Wish was successfully created.') }
-        format.xml  { render :xml => @wish, :status => :created, :location => @wish }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @wish.errors, :status => :unprocessable_entity }
-      end
+    if @wish.save
+      flash[:notice] = '登録しました'
+    else
+      flash[:alert] = '登録に失敗しました'
     end
+    respond_with(@wish)
   end
 
   def destroy
@@ -39,5 +37,11 @@ class WishesController < ApplicationController
       format.html { redirect_to(wishes_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def preview
+    @wish = Wish.new(params[:wish])
+    @wish.fetch
+    respond_with(@wish)
   end
 end
