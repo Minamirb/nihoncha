@@ -3,11 +3,7 @@ require 'test_helper'
 class WishTest < ActiveSupport::TestCase
   context "#fetch from amazon" do
     setup do
-      uri = "http://www.amazon.co.jp/dp/4797357401/ref=sr_1_2?ie=UTF8&qid=1290766740&sr=8-2"
-      io = Mock.new
-      io.expects(:read => File.read("#{Rails.root}/test/fixtures/amazon_data.html", :encoding => 'UTF-8'))
-      Wish.any_instance.stubs(:open).with(uri).returns(io)
-      @wish = Wish.new(:uri => uri)
+      @wish = Wish.new(:uri => mock_uri)
       @wish.fetch
     end
 
