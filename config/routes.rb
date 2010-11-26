@@ -1,4 +1,6 @@
 Nihoncha::Application.routes.draw do
+  resources :cashes
+
   root :to => "root#index"
 
   # The priority is based upon order of creation:

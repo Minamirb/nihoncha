@@ -1,0 +1,27 @@
+<h1>Listing cashes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cashes.each do |cash| %>
+  <tr>
+    <td><%= cash.name %></td>
+    <td><%= cash.price %></td>
+    <td><%= cash.user %></td>
+    <td><%= link_to 'Show', cash %></td>
+    <td><%= link_to 'Edit', edit_cash_path(cash) %></td>
+    <td><%= link_to 'Destroy', cash, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cash', new_cash_path %>
