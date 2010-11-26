@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  uri: MyString
+  name: MyString
+  price: 1
+  image_url: MyString
+  thumbneil_url: MyString
+  bought: false
+  user: 
+
+two:
+  uri: MyString
+  name: MyString
+  price: 1
+  image_url: MyString
+  thumbneil_url: MyString
+  bought: false
+  user: 

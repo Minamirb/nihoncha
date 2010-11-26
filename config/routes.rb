@@ -1,5 +1,10 @@
 Nihoncha::Application.routes.draw do
+
   resources :cashes
+
+  resources :wishes, :except => [:new, :edit, :update] do
+    post :preview, :on => :collection
+  end
 
   root :to => "root#index"
 

@@ -1,0 +1,24 @@
+<% @javascripts += ['jquery.lightboxLib', 'wishes/index'] %>
+<h1>欲しいものリスト</h1>
+<%= form_for(@wish, :url => preview_wishes_path) do |f| %>
+  URL:&nbsp;<%= f.text_field :uri %><%= f.submit 'プレビュー' %><%= image_tag('ajax-loader.gif', :style => 'display: none;', :id => 'ajax_loader') %>
+<% end %>
+<%= render 'layouts/notice' %>
+<table>
+  <tr>
+    <th>名前</th>
+    <th>値段</th>
+    <th>説明</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% @wishes.each do |wish| %>
+  <tr>
+    <td><%= link_to wish.name, wish%></td>
+    <td><%= wish.price %></td>
+    <td><%= truncate wish.description, :length => 50 %></td>
+    <td><%= link_to '[削除]', wish, :confirm => '削除してもよろしいですか?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

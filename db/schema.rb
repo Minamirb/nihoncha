@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(:version => 20101126130520) do
     t.datetime "updated_at"
   end
 
+  create_table "wishes", :force => true do |t|
+    t.string   "uri"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.string   "image_url"
+    t.string   "thumbneil_url"
+    t.boolean  "bought",        :default => false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"

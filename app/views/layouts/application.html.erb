@@ -10,5 +10,8 @@
 
 <%= yield %>
 
+<% @javascripts.each do |js| -%>
+  <%= javascript_include_tag js %>
+<% end -%>
 </body>
 </html>
