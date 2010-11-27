@@ -2,7 +2,7 @@ Nihoncha::Application.routes.draw do
   root :to => 'welcome#index'
 
   devise_for :users
-  get 'root', :to => 'root#index', :as => :user_root
+  get 'root', :to => 'wishes#index', :as => :user_root
 
   resources :wishes, :except => [:new, :edit, :update] do
     post :preview, :on => :collection
