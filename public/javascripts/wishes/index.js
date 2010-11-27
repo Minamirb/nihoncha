@@ -17,6 +17,14 @@ $(function(){
               action.pop();
               form.attr({'method': 'POST', 'action': action.join('/')});
               var wish = result['wish'];
+              var img;
+              if(wish['image_url']){
+                img = $(document.createElement('img'));
+                img.attr({src: wish['image_url'], align: 'top', width: 80});
+                img.css('float', 'left');
+                div.append(img);
+              }
+
               var attributes = ['name', 'price', 'description'];
               for(var n = 0; n < attributes.length; n++){
                 var d = $(document.createElement('div'));
@@ -24,6 +32,12 @@ $(function(){
                 d.attr('id', 'wish_' + attributes[n]);
                 div.append(d);
               }
+              if(img){
+                d = $(document.createElement('div'));
+                d.css('clear', 'both');
+                div.append(d);
+              }
+
               var message = $(document.createElement('p'));
               message.html('この内容で登録してもよろしいですか？');
               message.css({'text-align': 'center'});
