@@ -3,6 +3,9 @@ require 'test_helper'
 class CashesControllerTest < ActionController::TestCase
   setup do
     @cash = cashes(:one)
+    @user = users(:one)
+    @user.confirm!
+    sign_in @user
   end
 
   test "should get index" do
