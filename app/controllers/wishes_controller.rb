@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 class WishesController < ApplicationController
   respond_to :html, :json
+  before_filter :authenticate_user!
   def index
-    @wishes = Wish.order('created_at DESC').all
-    @wish = Wish.new
+    @wishes = current_user.wishes.order('created_at DESC').all
+    @wish = current_user.wishes.new
     respond_to do |format|
       format.html
       format.xml  { render :xml => @wishes }
@@ -11,7 +12,7 @@ class WishesController < ApplicationController
   end
 
   def show
-    @wish = Wish.find(params[:id])
+    @wish = current_user.wishes.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -20,7 +21,7 @@ class WishesController < ApplicationController
   end
 
   def create
-    @wish = Wish.new(params[:wish])
+    @wish = current_user.wishes.new(params[:wish])
     if @wish.save
       flash[:notice] = '登録しました'
     else
@@ -30,7 +31,7 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    @wish = Wish.find(params[:id])
+    @wish = current_user.wishes.find(params[:id])
     @wish.destroy
 
     respond_to do |format|
@@ -40,7 +41,7 @@ class WishesController < ApplicationController
   end
 
   def preview
-    @wish = Wish.new(params[:wish])
+    @wish = current_user.wishes.new(params[:wish])
     @wish.fetch
     respond_with(@wish)
   end

@@ -317,3 +317,7 @@ div#totop a {
   padding:0 0 0 12px;
   background:url("image/bg_totop.gif") 0 50% no-repeat;
 }
+
+#new_wish{
+  padding: 20px 2px;
+}
