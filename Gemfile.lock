@@ -82,3 +82,6 @@ DEPENDENCIES
   rails (= 3.0.3)
   shoulda
   sqlite3-ruby
+
+METADATA
+  version: 1.0.6
