@@ -1,6 +1,7 @@
     <div id="header">
       <h1>nihonchaプロジェクト</h1>
     </div><!-- header end -->
+    <% if current_user %>
     <div id="menu">
       <ul>
         <li><a href="sample.html">MENU1</a></li>
@@ -9,6 +10,7 @@
         <li><a href="sample.html">MENU4</a></li>
       </ul>
     </div><!-- menu end -->
+    <% end %>
     <div id="navi">
       <ul>
         <li><%= link_to(
