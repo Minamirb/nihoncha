@@ -1,6 +1,9 @@
-<h1>用途の変更</h1>
+<div id="wide">
+  <h2>用途の変更</h2>
+  <p>
+    <%= render 'form' %>
+  </p>
+  <%= link_to '表示', @cash %> |
+  <%= link_to '戻る', cashes_path %>
+</div><!-- wide end -->
 
-<%= render 'form' %>
-
-<%= link_to '表示', @cash %> |
-<%= link_to '戻る', cashes_path %>

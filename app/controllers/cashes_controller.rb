@@ -1,8 +1,9 @@
 class CashesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /cashes
   # GET /cashes.xml
   def index
-    @cashes = Cash.all
+    @cashes = current_user.cashes.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class CashesController < ApplicationController
   # GET /cashes/1
   # GET /cashes/1.xml
   def show
-    @cash = Cash.find(params[:id])
+    @cash = current_user.cashes.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +25,7 @@ class CashesController < ApplicationController
   # GET /cashes/new
   # GET /cashes/new.xml
   def new
-    @cash = Cash.new
+    @cash = current_user.cashes.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +35,14 @@ class CashesController < ApplicationController
 
   # GET /cashes/1/edit
   def edit
-    @cash = Cash.find(params[:id])
+    @cash = current_user.cashes.find(params[:id])
   end
 
   # POST /cashes
   # POST /cashes.xml
   def create
-    @cash = Cash.new(params[:cash])
+    @cash = current_user.cashes.new(params[:cash])
+    @cash.user_id = current_user.id if user_signed_in?
 
     respond_to do |format|
       if @cash.save
@@ -56,7 +58,7 @@ class CashesController < ApplicationController
   # PUT /cashes/1
   # PUT /cashes/1.xml
   def update
-    @cash = Cash.find(params[:id])
+    @cash = current_user.cashes.find(params[:id])
 
     respond_to do |format|
       if @cash.update_attributes(params[:cash])
@@ -72,7 +74,7 @@ class CashesController < ApplicationController
   # DELETE /cashes/1
   # DELETE /cashes/1.xml
   def destroy
-    @cash = Cash.find(params[:id])
+    @cash = current_user.cashes.find(params[:id])
     @cash.destroy
 
     respond_to do |format|
