@@ -12,27 +12,14 @@
 
 <body>
 <div id="wrapper">
-	<div id="temp">
-		<div id="header">
-			<h1>nihonchaプロジェクト</h1>
-		</div><!-- header end -->
-		<div id="menu">
-			<ul>
-				<li><!-- <a href="sample.html">MENU1</a> --><%= link_to '欲しいものリスト', wishes_path %></li>
-				<li><a href="1column.html">MENU2</a></li>
-				<li><a href="sample.html">MENU3</a></li>
-				<li><a href="sample.html">MENU4</a></li>
-			</ul>
-		</div><!-- menu end -->
-		<div id="navi">
-			<ul>
-				<li><a href="#">logout</a></li>
-				<li><a href="#">navi2</a></li>
-			</ul>
-		</div><!-- navi end -->
-
+  <div id="temp">
+    <%= render 'shared/header' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
-
+    <%= render 'shared/footer' %>
+  </div><!-- temp end -->
+</div><!-- wrapper end -->
 		<div id="footer">
 			<address>Copyright &copy; 2010 minamirb.nihoncha All Rights Reserved.</address>
 		</div><!-- footer end -->
