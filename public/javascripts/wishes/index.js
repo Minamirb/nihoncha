@@ -1,5 +1,5 @@
 $(function(){
-  lightboxConfig['lbdialog_defaultHeight'] = 300;
+  lightboxConfig['lbdialog_defaultHeight'] = 280;
   $("#wish_submit").click(function(){
     $(this).hide();
     $("#ajax_loader").show();
@@ -25,13 +25,21 @@ $(function(){
                 div.append(img);
               }
 
-              var attributes = ['name', 'price', 'description'];
-              for(var n = 0; n < attributes.length; n++){
-                var d = $(document.createElement('div'));
-                d.html(wish[attributes[n]]);
-                d.attr('id', 'wish_' + attributes[n]);
-                div.append(d);
-              }
+              var h3 = $(document.createElement('h3'));
+              var a = $(document.createElement('a'));
+              a.html(wish['name']);
+              a.attr('href', 'javascript:void(0); return false;');
+              h3.append(a);
+              h3.css('font-size', 'small');
+              var span = $(document.createElement('span'));
+              span.html('&yen;' + wish['price']);
+              h3.append(span);
+              div.append(h3);
+
+              var description = $(document.createElement('div'));
+              description.html(wish['description']);
+              div.append(description);
+
               if(img){
                 d = $(document.createElement('div'));
                 d.css('clear', 'both');
@@ -41,6 +49,7 @@ $(function(){
               var message = $(document.createElement('p'));
               message.html('この内容で登録してもよろしいですか？');
               message.css({'text-align': 'center'});
+
               div.append(message);
               lbdialog({
                 content: div.html(),
