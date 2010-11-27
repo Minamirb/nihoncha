@@ -4,7 +4,7 @@ class Wish < ActiveRecord::Base
 
   def fetch
     html = nil
-    doc = Nokogiri::HTML(open(uri).read)
+    doc = Nokogiri::HTML(open(URI.encode(uri)).read)
     if title = doc.xpath('//title').first
       self.name = title.text.split(/\s*[:：]\s*/)[1]
     end
