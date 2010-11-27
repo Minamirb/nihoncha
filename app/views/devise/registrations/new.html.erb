@@ -1,18 +1,20 @@
-<h2>Sign up</h2>
+<div id="wide">
+  <h2>ユーザー登録</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
+    <p>メールアドレス<br />
+    <%= f.text_field :email %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+    <p>パスワード<br />
+    <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+    <p>パスワード(確認)<br />
+    <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit "Sign up" %></p>
-<% end %>
+    <p><%= f.submit "送信" %></p>
+  <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+  <%= render :partial => "devise/shared/links" %>
+</div>
