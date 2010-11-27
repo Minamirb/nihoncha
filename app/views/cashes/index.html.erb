@@ -1,26 +1,35 @@
-<h1>○○のおこづかい帳</h1>
+<div id="wide">
+	<h2>○○のおこづかい帳</h2>
 
-<table>
-  <tr>
-    <th>日付</th>
-    <th>用途</th>
-    <th>金額</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>日付</th>
+      <th>用途</th>
+      <th>金額</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @cashes.each do |cash| %>
-  <tr>
-    <td><%= cash.updated_at%></td>
-    <td><%= cash.name %></td>
-    <td><%= cash.price %></td>
-    <td><%= link_to '変更', edit_cash_path(cash) %></td>
-    <td><%= link_to '削除', cash, :confirm => '削除していいですか？', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+    <% @cashes.each do |cash| %>
+    <tr>
+      <td><%= cash.created_at.in_time_zone('Osaka').strftime("%Y/%m/%d")%></td>
+      <td><%= cash.name %></td>
+      <td><%= cash.price %></td>
+      <td><%= link_to '[変更]', edit_cash_path(cash) %></td>
+      <td><%= link_to '[削除]', cash, :confirm => '削除していいですか？', :method => :delete %></td>
+    </tr>
+    <% end %>
+  </table>
+	<p>
+		<a href="sample.html">トップページへ戻る</a>
+	</p>
+	<div id="totop"><a href="#">ページのトップへ戻る</a></div><!-- toptop end -->
+</div><!-- wide end -->
 
+<!--
+
+-->
 <br />
 
 <%= link_to '新規作成', new_cash_path %>
