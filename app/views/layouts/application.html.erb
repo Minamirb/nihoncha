@@ -7,8 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
+<div id="wrapper">
+  <div id="temp">
+    <%= render 'shared/header' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <%= render 'shared/footer' %>
+  </div><!-- temp end -->
+</div><!-- wrapper end -->
 
 <% @javascripts.each do |js| -%>
   <%= javascript_include_tag js %>
