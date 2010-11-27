@@ -14,6 +14,8 @@ class Wish < ActiveRecord::Base
     if description = doc.xpath("//div[@class='productDescriptionWrapper']").first
       self.description = description.text
     end
+    if prod_image = doc.xpath("//img[@id='prodImage']").first
+      self.image_url = prod_image['src']
+    end
   end
-
 end
