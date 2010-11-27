@@ -1,4 +1,7 @@
 Nihoncha::Application.routes.draw do
+
+  resources :cashes
+
   root :to => 'welcome#index'
 
   devise_for :users

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @cash.name %>
+</p>
+
+<p>
+  <b>金額:</b>
+  <%= @cash.price %>
+</p>
+
+
+<%= link_to '編集', edit_cash_path(@cash) %> |
+<%= link_to '戻る', cashes_path %>

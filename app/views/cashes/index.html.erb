@@ -1,0 +1,33 @@
+<div id="wide">
+	<h2><%= user_signed_in? ? current_user.email : '○○' %>のおこづかい帳</h2>
+
+  <table>
+    <tr>
+      <th>日付</th>
+      <th>用途</th>
+      <th>金額</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @cashes.each do |cash| %>
+    <tr>
+      <td><%= cash.created_at.in_time_zone('Osaka').strftime("%Y/%m/%d")%></td>
+      <td><%= cash.name %></td>
+      <td align="right">￥<%= cash.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\1,').reverse %></td>
+      <td><%= link_to '[変更]', edit_cash_path(cash) %></td>
+      <td><%= link_to '[削除]', cash, :confirm => '削除していいですか？', :method => :delete %></td>
+    </tr>
+    <% end %>
+  </table>
+  <p>
+    <%= link_to '新規作成', new_cash_path %>
+  </p>
+  <div id="totop"><a href="#">ページのトップへ戻る</a></div><!-- toptop end -->
+</div><!-- wide end -->
+
+<br />
+
+<%= link_to '欲しいものリストに戻る' , wishes_path %>
+
