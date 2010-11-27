@@ -7,7 +7,7 @@ one:
   image_url: MyString
   thumbneil_url: MyString
   bought: false
-  user: 
+  user: one
 
 two:
   uri: MyString
@@ -16,4 +16,4 @@ two:
   image_url: MyString
   thumbneil_url: MyString
   bought: false
-  user: 
+  user: two
