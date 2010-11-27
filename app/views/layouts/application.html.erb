@@ -1,15 +1,30 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="ja" lang="ja">
 <head>
-  <title>Nihoncha</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>minami.rb nihonchaプロジェクト</title>
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+<link href="stylesheets/base.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-
-<%= yield %>
-
+<div id="wrapper">
+  <div id="temp">
+    <%= render 'shared/header' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <%= render 'shared/footer' %>
+  </div><!-- temp end -->
+</div><!-- wrapper end -->
+		<div id="footer">
+			<address>Copyright &copy; 2010 minamirb.nihoncha All Rights Reserved.</address>
+		</div><!-- footer end -->
+	</div><!-- temp end -->
+</div><!-- wrapper end -->
 <% @javascripts.each do |js| -%>
   <%= javascript_include_tag js %>
 <% end -%>

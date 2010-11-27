@@ -1,0 +1,16 @@
+p.notice, p.alert {  
+  width: 560px;  
+  margin: 5px auto;  
+} 
+   
+p.notice {  
+  color: #080;  
+} 
+  
+p.alert {  
+  color: #800;  
+} 
+  
+form#user_new label {  
+  width: 160px;  
+}

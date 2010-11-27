@@ -2,11 +2,16 @@ Nihoncha::Application.routes.draw do
 
   resources :cashes
 
+  root :to => 'welcome#index'
+
+  devise_for :users
+  get 'root', :to => 'root#index', :as => :user_root
+
   resources :wishes, :except => [:new, :edit, :update] do
     post :preview, :on => :collection
   end
 
-  root :to => "root#index"
+  #root :to => "root#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

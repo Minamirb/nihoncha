@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'mocha'
 gem 'shoulda'
 gem 'nokogiri'
+gem 'will_paginate', '3.0.pre'
+gem 'devise', '1.1.2'
 
 # Use unicorn as the web server
 # gem 'unicorn'
