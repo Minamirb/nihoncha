@@ -2,7 +2,7 @@
 class WishesController < ApplicationController
   respond_to :html, :json
   def index
-    @wishes = Wish.all
+    @wishes = Wish.order('created_at DESC').all
     @wish = Wish.new
     respond_to do |format|
       format.html

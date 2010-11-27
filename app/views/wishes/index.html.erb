@@ -8,7 +8,9 @@
   <% @wishes.each do |wish| %>
     <h3><%= link_to wish.name, wish%></h3>
     <p>
-      <%= truncate wish.description, :length => 50 %>
+      <%= image_tag wish.image_url, :style => 'float: left;' if wish.image_url %>
+      <%= wish.description %>
+      <div style="clear:both;"></div>
     </p>
     <p><%= wish.price %><br><%= link_to '[削除]', wish, :confirm => '削除してもよろしいですか?', :method => :delete %></p>
   <% end %>
