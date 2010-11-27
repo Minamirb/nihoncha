@@ -5,9 +5,15 @@ class Wish < ActiveRecord::Base
   def fetch
     html = nil
     doc = Nokogiri::HTML(open(uri).read)
-    self.name = doc.xpath('//title').first.text.split(/\s*[:：]\s*/)[1]
-    self.price = doc.xpath("//b[@class='priceLarge']").first.text.slice(/[\d,]+/).delete(',').to_i
-    self.description = doc.xpath("//div[@class='productDescriptionWrapper']").first.text
+    if title = doc.xpath('//title').first
+      self.name = title.text.split(/\s*[:：]\s*/)[1]
+    end
+    if price = (doc.xpath("//b[@class='priceLarge']").first || doc.xpath("//span[@class='price']").first)
+      self.price = price.text.slice(/[\d,]+/).delete(',').to_i
+    end
+    if description = doc.xpath("//div[@class='productDescriptionWrapper']").first
+      self.description = description.text
+    end
   end
 
 end
